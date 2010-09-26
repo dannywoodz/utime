@@ -1,14 +1,18 @@
 %token INTEGER DAYS HOURS MINUTES SECONDS NAMED_TIME
+%left '-' '+'
 %{
 #include <stdio.h>
 extern FILE *yyin;
 %}
 %%
 
-statement:
-|timespec '+' timespec { printf("%lu\n", $1 + $3); }
-|timespec '-' timespec { printf("%lu\n", $1 - $3); }
-|timespec               { printf("%lu\n", $1); }
+statement:expression		{ printf("%lu\n", $1); }
+;
+
+expression:
+|expression '+' timespec { $$=$1 + $3; }
+|expression '-' timespec { $$=$1 - $3; }
+|timespec                { $$=$1; }
 ;
 
 timespec: INTEGER HOURS { $$ = $1 * 60 * 60; }
