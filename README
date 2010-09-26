@@ -1,0 +1,24 @@
+ptime is a simple utility for outputting times in seconds since the Unix EPOC.
+I call it ptime because I previously used Perl to handle this, and needed a
+convenient replacement that understood concepts like 'now' and 'yesterday',
+and could perform additions or subtractions based on those tokens (i.e.
+'now - 4 hours'
+
+ptime accepts its input either from stdin or on the command line, e.g.
+
+% echo 3 + 4 | ./ptime
+7
+%
+
+or...
+
+% ./ptime 3 + 4
+7
+%
+
+It understands 'now' and 'yesterday' as times, and also the decorations
+'seconds', 'minutes', 'hours', making this valid:
+
+% echo now + 4 hours | ./ptime
+[whatever now + 4 hours in seconds is when you run it]
+%
