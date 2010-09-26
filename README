@@ -1,4 +1,7 @@
 utime is a simple utility for outputting times in seconds since the Unix EPOC.
+Times are specified as either straight numbers, or additions/subtractions on
+numbers.  Supported special times are: 'now', 'yesterday' and 'tomorrow':
+the latter are 24 hour offsets on 'now'.
 
 utime accepts its input either from stdin or on the command line, e.g.
 
@@ -12,9 +15,16 @@ or...
 7
 %
 
-It understands 'now' and 'yesterday' as times, and also the decorations
-'seconds', 'minutes', 'hours', making this valid:
+The decorations 'seconds', 'minutes', 'hours' are accepted on numbers, making
+this valid:
 
-% echo now + 4 hours | ./utime
+% ./utime now + 4 hours
 [whatever now + 4 hours in seconds is when you run it]
+%
+
+If you need to know what local time is represented by a given Unix timestamp,
+use the '-r' switch, e.g.:
+
+% ./utime -r 1285532072
+Sun Sep 26 21:14:32 2010
 %
