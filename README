@@ -1,8 +1,4 @@
 utime is a simple utility for outputting times in seconds since the Unix EPOC.
-I call it utime because I previously used Perl to handle this, and needed a
-convenient replacement that understood concepts like 'now' and 'yesterday',
-and could perform additions or subtractions based on those tokens (i.e.
-'now - 4 hours'
 
 utime accepts its input either from stdin or on the command line, e.g.
 
