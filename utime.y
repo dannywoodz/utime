@@ -1,12 +1,35 @@
 %token INTEGER DAYS HOURS MINUTES SECONDS NAMED_TIME
 %left '-' '+'
 %{
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
+#include <string.h>
 extern FILE *yyin;
+typedef enum { FORWARD, REVERSE } utime_mode_t;
+static utime_mode_t mode = FORWARD;
 %}
 %%
 
-statement:expression		{ printf("%lu\n", $1); }
+statement:expression		{
+  if ( mode == FORWARD ) printf("%lu\n", $1);
+  else {
+    struct tm *time;
+    char *time_string;
+    time_t unix_time = $1;
+    if ( (time = localtime(&unix_time)) == NULL )
+    {
+      perror("localtime");
+      exit(EXIT_FAILURE);
+    }
+    if ( (time_string = asctime(time)) == NULL )
+    {
+      perror("asctime");
+      exit(EXIT_FAILURE);
+    }
+    printf("%s", time_string);
+  }
+}
 ;
 
 expression:
@@ -27,6 +50,11 @@ timespec: INTEGER HOURS { $$ = $1 * 60 * 60; }
 
 int main(int argc, char *argv[])
 {
+  if ( argc > 1 && strcmp(argv[1], "-r") == 0 )
+  {
+    mode = REVERSE;
+    argv++; argc--;
+  }
   if ( argc > 1 )
   {
     yyin = tmpfile();
