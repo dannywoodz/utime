@@ -14,15 +14,16 @@ static utime_mode_t mode = FORWARD;
 statement:expression		{
   if ( mode == FORWARD ) printf("%lu\n", $1);
   else {
-    struct tm *time;
-    char *time_string;
+    struct tm time;
+    char time_string[26]; /* The 26-byte requirement is specified by POSIX for asctime_r */
     time_t unix_time = $1;
-    if ( (time = localtime(&unix_time)) == NULL )
+    memset(&time, 0, sizeof(struct tm));
+    if ( localtime_r(&unix_time, &time) == NULL )
     {
       perror("localtime");
       exit(EXIT_FAILURE);
     }
-    if ( (time_string = asctime(time)) == NULL )
+    if ( asctime_r(&time, time_string) == NULL )
     {
       perror("asctime");
       exit(EXIT_FAILURE);
