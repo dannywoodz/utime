@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 extern FILE *yyin;
+void yyerror(char*);
 typedef enum { FORWARD, REVERSE } utime_mode_t;
 static utime_mode_t mode = FORWARD;
 %}
@@ -67,3 +68,5 @@ int main(int argc, char *argv[])
   if ( yyin != stdin ) fclose(yyin);
   return 0;
 }
+
+void yyerror(char *s) { puts(s); }
