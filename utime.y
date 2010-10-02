@@ -5,6 +5,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <string.h>
+#include "utime.h"
 extern FILE *yyin;
 void yyerror(char*);
 typedef enum { FORWARD, REVERSE } utime_mode_t;
@@ -40,9 +41,9 @@ expression:
 |timespec                { $$=$1; }
 ;
 
-timespec: INTEGER HOURS { $$ = $1 * 60 * 60; }
-|INTEGER DAYS { $$ = $1 * 60 * 60 * 24; }
-|INTEGER MINUTES { $$ = $1 * 60; }
+timespec: INTEGER HOURS { $$ = $1 * HOUR_IN_SECONDS; }
+|INTEGER DAYS { $$ = $1 * DAY_IN_SECONDS; }
+|INTEGER MINUTES { $$ = $1 * MINUTE_IN_SECONDS; }
 |INTEGER SECONDS
 |INTEGER { $$ = $1; }
 |NAMED_TIME { $$ = $1; }
