@@ -1,0 +1,13 @@
+YACC=@YACC@
+LEX=@LEX@
+LEXLIB=@LEXLIB@
+CC=@CC@
+
+all: utime.y utime.l
+	$(YACC) -d utime.y
+	$(LEX) utime.l
+	$(CC) y.tab.c lex.yy.c -o utime $(LEXLIB)
+install:
+	mv utime @prefix@/bin
+clean:
+	rm -f utime y.tab.c y.tab.h lex.yy.o lex.yy.c

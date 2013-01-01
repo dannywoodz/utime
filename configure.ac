@@ -1,0 +1,6 @@
+AC_INIT(utime,1.0,dannywoodz@yahoo.co.uk)
+AC_PROG_CC()
+AC_PROG_LEX()
+AC_PROG_YACC()
+AC_PREFIX_DEFAULT(/usr/local)
+AC_OUTPUT([Makefile])
