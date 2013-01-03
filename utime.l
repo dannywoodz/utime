@@ -1,3 +1,7 @@
+/******************************************************************************
+ * utime.l - lexer instructions for identifying tokens for the utime program.
+ *****************************************************************************/
+
 %{
 #include <time.h>
 #include "y.tab.h"

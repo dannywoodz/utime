@@ -1,3 +1,7 @@
+/******************************************************************************
+ * utime.y - a simple grammar definition for utime expressions
+ *****************************************************************************/
+
 %token INTEGER DAYS HOURS MINUTES SECONDS NAMED_TIME
 %left '-' '+'
 %{
