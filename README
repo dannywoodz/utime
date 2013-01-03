@@ -31,7 +31,7 @@ the latter are 24 hour offsets on 'now'.
     % ./utime -r 1285532072
     Sun Sep 26 21:14:32 2010
 
-# LICENCE
+# LICENSE
 
 GPLv3 (http://opensource.org/licenses/GPL-3.0)
 
