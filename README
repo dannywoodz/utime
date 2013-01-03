@@ -1,3 +1,11 @@
+NAME
+====
+
+utime
+
+DESCRIPTION
+===========
+
 utime is a simple utility for outputting times in seconds since the Unix epoch.
 Times are specified as either straight numbers, or additions/subtractions on
 numbers.  Supported special times are: 'now', 'yesterday' and 'tomorrow':
@@ -40,3 +48,13 @@ This is useful when looking to obtain the timestamp for some relative time:
 %
 ./utime now + 4 hours | ./utime -r
 %
+
+LICENCE
+=======
+
+GPLv3
+
+AUTHOR
+======
+
+Danny Woods (dannywoodz@yahoo.co.uk)
