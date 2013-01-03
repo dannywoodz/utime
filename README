@@ -1,4 +1,4 @@
-utime is a simple utility for outputting times in seconds since the Unix EPOC.
+utime is a simple utility for outputting times in seconds since the Unix epoch.
 Times are specified as either straight numbers, or additions/subtractions on
 numbers.  Supported special times are: 'now', 'yesterday' and 'tomorrow':
 the latter are 24 hour offsets on 'now'.
@@ -22,9 +22,21 @@ this valid:
 [whatever now + 4 hours in seconds is when you run it]
 %
 
+or:
+
+%
+./utime now + 2 days - 4 hours
+%
+
 If you need to know what local time is represented by a given Unix timestamp,
 use the '-r' switch, e.g.:
 
 % ./utime -r 1285532072
 Sun Sep 26 21:14:32 2010
+%
+
+This is useful when looking to obtain the timestamp for some relative time:
+
+%
+./utime now + 4 hours | ./utime -r
 %
