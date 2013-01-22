@@ -6,8 +6,7 @@
 
 utime is a simple utility for outputting times in seconds since the Unix epoch.
 Times are specified as either straight numbers, or additions/subtractions on
-numbers.  Supported special times are: 'now', 'yesterday' and 'tomorrow':
-the latter are 24 hour offsets on 'now'.
+numbers.  Supported special times are: 'now', 'today', 'yesterday' and 'tomorrow'.  'now' is right now; 'today' is 00:00:00 this morning; 'yesterday' and 'tomorrow' are 24 offsets from right now.
 
 # EXAMPLES
 
