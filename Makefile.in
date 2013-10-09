@@ -1,13 +1,4 @@
-YACC=@YACC@
-LEX=@LEX@
-LEXLIB=@LEXLIB@
-CC=@CC@
+all clean install uninstall utime:
+	cd src && $(MAKE) $@
 
-all: utime.y utime.l
-	$(YACC) -d utime.y
-	$(LEX) utime.l
-	$(CC) y.tab.c @LEX_OUTPUT_ROOT@.c -o utime $(LEXLIB)
-install:
-	install utime @prefix@/bin
-clean:
-	rm -f utime y.tab.c y.tab.h @LEX_OUTPUT_ROOT@.c @LEX_OUTPUT_ROOT@.o
+.PHONY: all clean install uninstall
